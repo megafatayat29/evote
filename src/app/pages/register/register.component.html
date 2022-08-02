@@ -1,16 +1,162 @@
-<div class="container">
-    <div class="register-content">
-        <input type="text" name="fullName" placeholder="Nama Lengkap">
-        <input type="email" name="email" placeholder="Email">
-        <input type="text" name="noHp" placeholder="No Telp / WA">
-        <input type="text" name="address" placeholder="Alamat">
-        <input type="text" name="status" placeholder="Status">
-        <input type="text" name="edu" placeholder="Pendidikan">
-        <input type="text" name="campus" placeholder="Perguruan Tinggi">
-        <input type="password" name="password" placeholder="Password">
+<app-header></app-header>
 
-        <div class="btn-login">
-            <button class="btn btn-sm btn-primary">Register</button>
+<div class="container-md shadow-lg m-2 mx-auto">
+    <div class="row bg-base">
+        <div class="col p-5">
+          <h1 class="text-base">Form Pendaftaran</h1>
+          <h3>Peserta Konvercab V PC ISNU Surabaya</h3>
+          <hr class="text-base" />
         </div>
+    </div>
+    <div class="row bg-light justify-content-start p-5">
+        <div class="col-md-6">
+            <form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+              <div class="has-validation mb-3">
+                <div class="mb-3">
+                    <label class="form-label">Nama Lengkap *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="name"
+                      [ngClass]="isFieldValid('name')"
+                      placeholder="Masukkan nama anda"
+                    />
+                    <div
+                      class="invalid-feedback"
+                      validation-message
+                      [control]="getControl('name')"
+                      label="name"
+                    ></div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Email *</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    formControlName="email"
+                    [ngClass]="isFieldValid('email')"
+                    placeholder="Masukkan email anda"
+                  />
+                  <div
+                    class="invalid-feedback"
+                    validation-message
+                    [control]="getControl('email')"
+                    label="email"
+                  ></div>
+                </div>
+      
+                <div class="mb-3">
+                  <label class="form-label">No Telpon / WA *</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="noTelp"
+                    [ngClass]="isFieldValid('noTelp')"
+                    placeholder="Masukkan No Telpon / WA anda"
+                  />
+                  <!-- <div
+                    class="invalid-feedback"
+                    validation-message
+                    [control]="getControl('noTelp')"
+                    label="noTelp"
+                  ></div> -->
+                </div>
+      
+                <div class="mb-3">
+                    <label class="form-label">Alamat *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="address"
+                      [ngClass]="isFieldValid('address')"
+                      placeholder="Masukkan alamat anda"
+                    />
+                    <!-- <div
+                      class="invalid-feedback"
+                      validation-message
+                      [control]="getControl('address')"
+                      label="address"
+                    ></div> -->
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Status *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="status"
+                      [ngClass]="isFieldValid('status')"
+                      placeholder="Masukkan status anda"
+                    />
+                    <!-- <div
+                      class="invalid-feedback"
+                      validation-message
+                      [control]="getControl('status')"
+                      label="status"
+                    ></div> -->
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Pendidikan *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="edu"
+                      [ngClass]="isFieldValid('edu')"
+                      placeholder="Masukkan pendidikan terakhir anda"
+                    />
+                    <!-- <div
+                      class="invalid-feedback"
+                      validation-message
+                      [control]="getControl('edu')"
+                      label="edu"
+                    ></div> -->
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Perguruan Tinggi *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="campus"
+                      [ngClass]="isFieldValid('campus')"
+                      placeholder="Masukkan pergirian tinggi anda"
+                    />
+                    <!-- <div
+                      class="invalid-feedback"
+                      validation-message
+                      [control]="getControl('campus')"
+                      label="campus"
+                    ></div> -->
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password *</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      formControlName="password"
+                      [ngClass]="isFieldValid('password')"
+                      placeholder="Masukkan password anda"
+                    />
+                    <!-- <div
+                      class="invalid-feedback"
+                      validation-message
+                      [control]="getControl('password')"
+                      label="password"
+                    ></div> -->
+                </div>
+      
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="guestForm.invalid"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
     </div>
 </div>
