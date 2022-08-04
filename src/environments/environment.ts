@@ -6,6 +6,13 @@ export const environment = {
   production: false
 };
 
+export const validationMessage = {
+  required: 'Field %s must be filled',
+  minlength: 'Field %s must be at least longer than %s.',
+  email: 'Field %s must be a valid email.',
+  maxlength: 'Field %s maximum only has length %s characters.'
+}
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

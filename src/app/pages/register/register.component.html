@@ -19,14 +19,14 @@
                       class="form-control"
                       formControlName="name"
                       [ngClass]="isFieldValid('name')"
-                      placeholder="Masukkan nama anda"
+                      placeholder="Masukkan nama lengkap anda"
+                      id="name"
+                      name="name"
+                      required
                     />
-                    <div
-                      class="invalid-feedback"
-                      validation-message
-                      [control]="getControl('name')"
-                      label="name"
-                    ></div>
+                    <span class="invalid-feedback"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.name?.errors"
+                    >Nama Lengkap harus diisi</span>
                 </div>
 
                 <div class="mb-3">
@@ -37,13 +37,13 @@
                     formControlName="email"
                     [ngClass]="isFieldValid('email')"
                     placeholder="Masukkan email anda"
+                    id="email"
+                    name="email"
+                    required
                   />
-                  <div
-                    class="invalid-feedback"
-                    validation-message
-                    [control]="getControl('email')"
-                    label="email"
-                  ></div>
+                  <span class="invalid-feedback"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.email?.errors"
+                    >{{renderEmailErrMessage()}}</span>
                 </div>
       
                 <div class="mb-3">
@@ -54,13 +54,13 @@
                     formControlName="noTelp"
                     [ngClass]="isFieldValid('noTelp')"
                     placeholder="Masukkan No Telpon / WA anda"
+                    id="noTelp"
+                    name="noTelp"
+                    required
                   />
-                  <!-- <div
-                    class="invalid-feedback"
-                    validation-message
-                    [control]="getControl('noTelp')"
-                    label="noTelp"
-                  ></div> -->
+                  <span class="invalid-feedback"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.noTelp?.errors"
+                    >No Telpon / WA harus diisi</span>
                 </div>
       
                 <div class="mb-3">
@@ -71,13 +71,13 @@
                       formControlName="address"
                       [ngClass]="isFieldValid('address')"
                       placeholder="Masukkan alamat anda"
+                      id="address"
+                      name="address"
+                      required
                     />
-                    <!-- <div
-                      class="invalid-feedback"
-                      validation-message
-                      [control]="getControl('address')"
-                      label="address"
-                    ></div> -->
+                    <span class="invalid-feedback"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.address?.errors"
+                    >Alamat harus diisi</span>
                 </div>
 
                 <div class="mb-3">
@@ -88,30 +88,30 @@
                       formControlName="status"
                       [ngClass]="isFieldValid('status')"
                       placeholder="Masukkan status anda"
+                      id="status"
+                      name="status"
+                      required
                     />
-                    <!-- <div
-                      class="invalid-feedback"
-                      validation-message
-                      [control]="getControl('status')"
-                      label="status"
-                    ></div> -->
+                    <span class="invalid-feedback"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.status?.errors"
+                    >Status harus diisi</span>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Pendidikan *</label>
+                    <label class="form-label">Pendidikan Terkakhir *</label>
                     <input
                       type="text"
                       class="form-control"
                       formControlName="edu"
                       [ngClass]="isFieldValid('edu')"
                       placeholder="Masukkan pendidikan terakhir anda"
+                      id="edu"
+                      name="edu"
+                      required
                     />
-                    <!-- <div
-                      class="invalid-feedback"
-                      validation-message
-                      [control]="getControl('edu')"
-                      label="edu"
-                    ></div> -->
+                    <span class="invalid-feedback"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.edu?.errors"
+                    >Pendidikan Terkakhir harus diisi</span>
                 </div>
 
                 <div class="mb-3">
@@ -121,14 +121,14 @@
                       class="form-control"
                       formControlName="campus"
                       [ngClass]="isFieldValid('campus')"
-                      placeholder="Masukkan pergirian tinggi anda"
+                      placeholder="Masukkan perguruan tinggi anda"
+                      id="campus"
+                      name="campus"
+                      required
                     />
-                    <!-- <div
-                      class="invalid-feedback"
-                      validation-message
-                      [control]="getControl('campus')"
-                      label="campus"
-                    ></div> -->
+                    <span class="invalid-feedback"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.campus?.errors"
+                    >Perguruan Tinggi harus diisi</span>
                 </div>
 
                 <div class="mb-3">
@@ -139,13 +139,13 @@
                       formControlName="password"
                       [ngClass]="isFieldValid('password')"
                       placeholder="Masukkan password anda"
+                      id="password"
+                      name="password"
+                      required
                     />
-                    <!-- <div
-                      class="invalid-feedback"
-                      validation-message
-                      [control]="getControl('password')"
-                      label="password"
-                    ></div> -->
+                    <span class="invalid-feedback"
+                    *ngIf="guestForm.touched && guestForm.controls?.password?.errors"
+                    >{{renderPasswordErrMessage()}}</span>
                 </div>
       
                 <button
@@ -158,5 +158,6 @@
               </div>
             </form>
           </div>
+          <button (click)="test()">mega button</button>
     </div>
 </div>

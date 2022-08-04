@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     status: new FormControl(null, [Validators.required]),
     edu: new FormControl(null, [Validators.required]),
     campus: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required])
+    password: new FormControl(null, [Validators.required, Validators.minLength(6)])
   })
 
   constructor(
@@ -32,11 +32,37 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  test():void{
+    console.log(this.guestForm);
+  }
+  
+  renderPasswordErrMessage():string {
+    const errorObj = this.guestForm.controls?.password?.errors
+    if(errorObj?.required){
+      return 'Password harus diisi'
+    }
+    return 'Password minimal 6 karakter'
+  }
+
+  renderEmailErrMessage():string {
+    const errorObj = this.guestForm.controls?.email?.errors
+    if(errorObj?.required){
+      return 'Email harus diisi'
+    }
+    return 'Email tidak valid'
+  }
+
   onSubmit(): void {
     this.loading = true;
 
     this.onReset();
     this.router.navigateByUrl('/contact');
+  }
+
+  formatString(text: string, params: any[]): string {
+    let i = 0;
+
+    return ( text ? text.replace(/%s/g, () => params.slice(i, ++i) as any): '' );
   }
 
   onReset(): void {
