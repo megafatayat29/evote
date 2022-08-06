@@ -6,6 +6,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterService } from './register/services/register.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PagesRoutingModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    RegisterService
   ]
 })
 export class PagesModule { }

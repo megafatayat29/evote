@@ -79,7 +79,8 @@
               "browserTarget": "evote-isnu:build:production"
             },
             "development": {
-              "browserTarget": "evote-isnu:build:development"
+              "browserTarget": "evote-isnu:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
