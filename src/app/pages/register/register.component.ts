@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     this.loading = true;
     const guestBook: GuestBook = this.guestForm.value;
-    console.log(guestBook);
     this.registerService.save(guestBook)
       .subscribe(() => {
         this.onReset();

@@ -28,11 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   renderPassErrMessage():string {
-    const errorObj = this.loginForm.controls?.email?.errors
+    const errorObj = this.loginForm.controls?.password?.errors
     if(errorObj?.required){
-      return 'Email harus diisi'
+      return 'Password harus diisi'
     }
-    return 'Email tidak valid'
+    return 'Password minimal 8 karakter'
   }
 
   isFieldValid(fieldName: string, parent?: AbstractControl): {[key: string]: boolean} {
