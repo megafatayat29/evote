@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertMessage } from 'src/app/shared/models/alert-message-interface';
 import { GuestBook } from 'src/app/shared/models/guest-book.model';
+import { RegisterService } from './services/register.service';
 
 @Component({
   selector: 'app-register',
@@ -12,21 +14,21 @@ export class RegisterComponent implements OnInit {
 
   loading: boolean = false;
   guestBook!: GuestBook;
-  // message?: AlertMessage;
+  message?: AlertMessage;
   
   guestForm: FormGroup = new FormGroup({
-    name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    nama: new FormControl(null, [Validators.required, Validators.minLength(3)]),
     email: new FormControl(null, [Validators.required, Validators.email]),
     noTelp: new FormControl(null, [Validators.required]),
-    address: new FormControl(null, [Validators.required]),
-    status: new FormControl(null, [Validators.required]),
-    edu: new FormControl(null, [Validators.required]),
-    campus: new FormControl(null, [Validators.required]),
-    password: new FormControl(null, [Validators.required, Validators.minLength(6)])
+    alamat: new FormControl(null, [Validators.required]),
+    statusAnggota: new FormControl(null, [Validators.required]),
+    pendidikanTerakhir: new FormControl(null, [Validators.required]),
+    universitas: new FormControl(null, [Validators.required]),
   })
 
   constructor(
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly registerService: RegisterService
   ) { }
 
   ngOnInit(): void {
@@ -34,14 +36,6 @@ export class RegisterComponent implements OnInit {
 
   test():void{
     console.log(this.guestForm);
-  }
-  
-  renderPasswordErrMessage():string {
-    const errorObj = this.guestForm.controls?.password?.errors
-    if(errorObj?.required){
-      return 'Password harus diisi'
-    }
-    return 'Password minimal 6 karakter'
   }
 
   renderEmailErrMessage():string {
@@ -54,9 +48,28 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     this.loading = true;
+    const guestBook: GuestBook = this.guestForm.value;
+    console.log(guestBook);
+    this.registerService.save(guestBook)
+      .subscribe(() => {
+        this.onReset();
+        this.router.navigateByUrl('/register');
+      },
+      (error: any) => console.error,
+      () => this.loading = false
+      );
+
+    this.message = {
+      status: 'success',
+      text: `Selamat, ${guestBook.nama} berhasil mendaftar KONVERCAB V PC ISNU Surabaya!`
+    }
+
+    setTimeout(() => {
+      this.message = undefined;
+    }, 10000);
 
     this.onReset();
-    this.router.navigateByUrl('/contact');
+    this.router.navigateByUrl('/register');
   }
 
   formatString(text: string, params: any[]): string {

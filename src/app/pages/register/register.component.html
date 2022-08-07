@@ -9,6 +9,23 @@
         </div>
     </div>
     <div class="row bg-light justify-content-start p-5">
+      <ng-container *ngIf="message">
+        <div
+          class="mt-4 alert {{
+            message.status ? 'alert-' + message.status : ''
+          }} fade show"
+          role="alert"
+        >
+          {{ message.text }}
+          <button
+            type="button"
+            class="btn-close btn-sm float-end"
+            data-bs-dismiss="alert"
+            (click)="message = undefined"
+            aria-label="Close"
+          ></button>
+        </div>
+      </ng-container>
         <div class="col-md-6">
             <form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
               <div class="has-validation mb-3">
@@ -17,15 +34,15 @@
                     <input
                       type="text"
                       class="form-control"
-                      formControlName="name"
-                      [ngClass]="isFieldValid('name')"
+                      formControlName="nama"
+                      [ngClass]="isFieldValid('nama')"
                       placeholder="Masukkan nama lengkap anda"
-                      id="name"
-                      name="name"
+                      id="nama"
+                      name="nama"
                       required
                     />
                     <span class="invalid-feedback"
-                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.name?.errors"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.nama?.errors"
                     >Nama Lengkap harus diisi</span>
                 </div>
 
@@ -68,50 +85,42 @@
                     <input
                       type="text"
                       class="form-control"
-                      formControlName="address"
-                      [ngClass]="isFieldValid('address')"
+                      formControlName="alamat"
+                      [ngClass]="isFieldValid('alamat')"
                       placeholder="Masukkan alamat anda"
-                      id="address"
-                      name="address"
+                      id="alamat"
+                      name="alamat"
                       required
                     />
                     <span class="invalid-feedback"
-                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.address?.errors"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.alamat?.errors"
                     >Alamat harus diisi</span>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Status *</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="status"
-                      [ngClass]="isFieldValid('status')"
-                      placeholder="Masukkan status anda"
-                      id="status"
-                      name="status"
-                      required
-                    />
+                    <select formControlName="statusAnggota" id="statusAnggota" class="form-select" [ngClass]="isFieldValid('statusAnggota')" required>
+                      <option value="-" disabled selected>- Pilih Status -</option>
+                      <option value="1">Pengurus PC ISNU Surabaya periode 2018 - 2022</option>
+                      <option value="2">Pengurus PAC ISNU Kota Surabaya</option>
+                      <option value="3">Anggota ISNU Kota Surabaya (Undangan)</option>
+                    </select>
                     <span class="invalid-feedback"
-                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.status?.errors"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.statusAnggota?.errors"
                     >Status harus diisi</span>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Pendidikan Terkakhir *</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="edu"
-                      [ngClass]="isFieldValid('edu')"
-                      placeholder="Masukkan pendidikan terakhir anda"
-                      id="edu"
-                      name="edu"
-                      required
-                    />
+                    <label class="form-label">Pendidikan Terakhir *</label>
+                    <select formControlName="pendidikanTerakhir" id="pendidikanTerakhir" class="form-select" [ngClass]="isFieldValid('pendidikanTerakhir')" required>
+                      <option value="-" disabled>- Pilih Pendidikan Terakhir -</option>
+                      <option value="1">S1</option>
+                      <option value="2">S2</option>
+                      <option value="3">S3</option>
+                    </select>
                     <span class="invalid-feedback"
-                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.edu?.errors"
-                    >Pendidikan Terkakhir harus diisi</span>
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.pendidikanTerakhir?.errors"
+                    >Pendidikan Terakhir harus diisi</span>
                 </div>
 
                 <div class="mb-3">
@@ -119,35 +128,18 @@
                     <input
                       type="text"
                       class="form-control"
-                      formControlName="campus"
-                      [ngClass]="isFieldValid('campus')"
+                      formControlName="universitas"
+                      [ngClass]="isFieldValid('universitas')"
                       placeholder="Masukkan perguruan tinggi anda"
-                      id="campus"
-                      name="campus"
+                      id="universitas"
+                      name="universitas"
                       required
                     />
                     <span class="invalid-feedback"
-                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.campus?.errors"
+                    *ngIf="(guestForm.touched || guestForm.dirty) && guestForm.controls?.universitas?.errors"
                     >Perguruan Tinggi harus diisi</span>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">Password *</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      formControlName="password"
-                      [ngClass]="isFieldValid('password')"
-                      placeholder="Masukkan password anda"
-                      id="password"
-                      name="password"
-                      required
-                    />
-                    <span class="invalid-feedback"
-                    *ngIf="guestForm.touched && guestForm.controls?.password?.errors"
-                    >{{renderPasswordErrMessage()}}</span>
-                </div>
-      
                 <button
                   type="submit"
                   class="btn btn-primary"
@@ -156,8 +148,8 @@
                   Submit
                 </button>
               </div>
+              <!-- <button onclick="test()">Jal</button> -->
             </form>
           </div>
-          <!-- <button (click)="test()">mega button</button> -->
     </div>
 </div>

@@ -1,11 +1,10 @@
 export interface GuestBook {
     id: string;
-    name: string;
+    nama: string;
     email: string;
     noTelp: string;
-    address: string;
-    status: string;
-    edu: string;
-    campus: string;
-    password: string;
+    alamat: string;
+    statusAnggota: string;
+    pendidikanTerakhir: string;
+    universitas: string;
   }
