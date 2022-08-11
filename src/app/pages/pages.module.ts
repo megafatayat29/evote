@@ -7,12 +7,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterService } from './register/services/register.service';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
     PagesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccountComponent
   ],
   imports: [
     CommonModule,
