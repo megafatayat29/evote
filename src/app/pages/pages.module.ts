@@ -8,13 +8,15 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterService } from './register/services/register.service';
 import { AccountComponent } from './account/account.component';
+import { VerifiedEmailComponent } from './verified-email/verified-email.component';
 
 @NgModule({
   declarations: [
     PagesComponent,
     LoginComponent,
     RegisterComponent,
-    AccountComponent
+    AccountComponent,
+    VerifiedEmailComponent
   ],
   imports: [
     CommonModule,

@@ -50,25 +50,35 @@ export class RegisterComponent implements OnInit {
     this.loading = true;
     const guestBook: GuestBook = this.guestForm.value;
     this.registerService.save(guestBook)
-      .subscribe(() => {
-        this.onReset();
-        this.router.navigateByUrl('/register');
-      },
-      (error: any) => console.error,
-      () => this.loading = false
+      .subscribe(
+        {
+          next: (value: any) => {
+            this.onReset();        
+            this.message = {
+              status: 'success',
+              text: `Selamat, ${guestBook.nama} berhasil mendaftar KONVERCAB V PC ISNU Surabaya!`
+            }
+            sessionStorage.setItem("register", JSON.stringify(guestBook));
+            this.router.navigateByUrl('/verified-email');
+          }, 
+          error: (error: any) => {
+            console.log(error);
+            this.message = {
+              status: 'danger',
+              text: error.error ? error.error.message : error.message
+            }
+          },
+          complete: () => this.loading = false  
+        }
       );
 
-    this.message = {
-      status: 'success',
-      text: `Selamat, ${guestBook.nama} berhasil mendaftar KONVERCAB V PC ISNU Surabaya!`
-    }
 
     setTimeout(() => {
       this.message = undefined;
     }, 10000);
 
-    this.onReset();
-    this.router.navigateByUrl('/register');
+    // this.onReset();
+    // this.router.navigateByUrl('/register');
   }
 
   formatString(text: string, params: any[]): string {

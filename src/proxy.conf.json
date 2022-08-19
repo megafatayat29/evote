@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://e-vote-isnu-be.herokuapp.com/api",
+        "target": "http://localhost:8080/api",
         "logLevel": "debug",
         "changeOrigin": true,
         "pathRewrite": {

@@ -1,0 +1,77 @@
+<app-header></app-header>
+
+<div class="container-md shadow-lg m-2 mx-auto">
+    <div class="row bg-base">
+        <div class="col p-5">
+          <h1 class="text-base">Verified Email</h1>
+          <h3>Panitia Konvercab V PC ISNU Surabaya</h3>
+          <hr class="text-base" />
+        </div>
+    </div>
+    <div class="row bg-light justify-content-center d-flex p-5 align-items-center">
+        <ng-container *ngIf="isVerified">
+            <div class="container register-content" style="margin-bottom: 10px; font-size: 20px;">
+                Congratulation your account is verified.
+            </div>
+            <div class="container register-content" [hidden]="retry">
+                <p style="margin: 0;">see you soon in voting day
+            </div>
+        </ng-container>
+        <ng-container *ngIf="modeVerification && !isVerified">
+            <ng-container *ngIf="!isError">
+                <div class="container register-content" style="margin-bottom: 10px; font-size: 20px;">
+                    Please Wait until we finished your registration.
+                </div>
+                <div class="container register-content" [hidden]="retry">
+                    <p style="margin: 0;">click this if you did not get the email, 
+                        <button (click)="send()" class="btn btn-info" [disabled]="btnDisable || isError">
+                            <em>click me</em>
+                        </button> to send the email again </p>
+                </div>
+                <div class="p-5 my-4 justify-content-center d-flex align-items-center">
+                    <img [hidden]="!isSend" src="../../../assets/images/loading.gif" alt="loading..." class="gambar">
+                </div>
+            </ng-container>
+            <ng-container *ngIf="isError">
+                <div class="container register-content" style="margin-bottom: 10px; font-size: 20px;">
+                    Your token link has expired or invalid.
+                </div>
+                <div class="container register-content">
+                    <p style="margin: 0;">click this to direct you to registered form, 
+                        <button (click)="register()" class="btn btn-info"><em>click me</em></button> </p>
+                </div>
+                <div class="p-5 my-4 justify-content-center d-flex align-items-center">
+                    <img src="../../../assets/images/danger.png" alt="Not Allowed..." class="gambar">
+                </div>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!modeVerification">
+            <ng-container *ngIf="isRegistered">
+                <div class="container register-content" style="margin-bottom: 10px; font-size: 20px;">
+                    We Have Send you email verification, Please Check your Email
+                </div>
+                <div class="container register-content">
+                    <p style="margin: 0;">click this if you did not get the email, 
+                        <button (click)="send()" class="btn btn-info" [disabled]="btnDisable">
+                            <em>click me</em>
+                        </button> to send the email again </p>
+                </div>
+                <div class="p-5 my-4 justify-content-center d-flex align-items-center">
+                    <img [hidden]="!isSend" src="../../../assets/images/loading.gif" alt="loading..." class="gambar">
+                </div>
+            </ng-container>
+            <ng-container *ngIf="!isRegistered">
+                <div class="container register-content" style="margin-bottom: 10px; font-size: 20px;">
+                    You are not registered, Please fill the form the we provided
+                </div>
+                <div class="container register-content">
+                    <p style="margin: 0;">click this to direct you to registered form, 
+                        <button (click)="register()" class="btn btn-info"><em>click me</em></button>
+                </div>
+                <div class="p-5 my-4 justify-content-center d-flex align-items-center">
+                    <img src="../../../assets/images/danger.png" alt="Not Allowed..." class="gambar">
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

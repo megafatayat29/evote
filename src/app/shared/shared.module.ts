@@ -5,8 +5,6 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './component/footer/footer.component';
 import { ValidationMessageComponent } from './component/validation-message/validation-message.component';
 
-
-
 @NgModule({
   declarations: [
     HeaderComponent,
