@@ -24,7 +24,7 @@ export class RegisterService {
   }
 
   save(guestBook: GuestBook): Observable<any> {
-    return this.http.post<any>(`/api/v1/register`, guestBook)
+    return this.http.post<any>(`https://e-vote-isnu-be.herokuapp.com/api/v1/register`, guestBook)
       .pipe(
         map(()=> this.guestSubject.next(true))
     )    
