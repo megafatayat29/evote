@@ -15,14 +15,14 @@ export class VerifiedEmailService {
   ) { }
 
   sendEmailVerification(email: string): Observable<any> {
-    return this.http.post<any>(`/api/v1/service/email`, {"email" : email})
+    return this.http.post<any>(`https://e-vote-isnu-be.herokuapp.com/api/v1/service/email`, {"email" : email})
       .pipe(
         map(()=> this.guestSubject.next(true))
     )    
   }
 
   sendUndangan(token: string): Observable<any> {
-    return this.http.get<any>(`/api/v1/anggota/authenticate/${token}`)
+    return this.http.get<any>(`https://e-vote-isnu-be.herokuapp.com/api/v1/anggota/authenticate/${token}`)
     .pipe(
       map(()=> this.guestSubject.next(true))
     )
