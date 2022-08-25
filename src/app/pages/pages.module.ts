@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterService } from './register/services/register.service';
 import { AccountComponent } from './account/account.component';
 import { VerifiedEmailComponent } from './verified-email/verified-email.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { VerifiedEmailComponent } from './verified-email/verified-email.componen
     LoginComponent,
     RegisterComponent,
     AccountComponent,
-    VerifiedEmailComponent
+    VerifiedEmailComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,
