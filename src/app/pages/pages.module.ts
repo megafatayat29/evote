@@ -10,6 +10,8 @@ import { RegisterService } from './register/services/register.service';
 import { AccountComponent } from './account/account.component';
 import { VerifiedEmailComponent } from './verified-email/verified-email.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidebarComponent } from './dashboard/components/sidebar/sidebar.component';
+import { ListComponent } from './dashboard/components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RegisterComponent,
     AccountComponent,
     VerifiedEmailComponent,
-    DashboardComponent
+    DashboardComponent,
+    SidebarComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,
