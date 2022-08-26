@@ -64,6 +64,7 @@ export class VerifiedEmailComponent implements OnInit {
   }
 
   verifiedToken(token: string): void {
+    this.btnDisable = true;
     this.emailService.sendUndangan(token).subscribe(
       {
         next: (value: any) => {
@@ -73,6 +74,9 @@ export class VerifiedEmailComponent implements OnInit {
         error: (err: any) => {
           this.isSend = false;
           this.isError = true;
+        },
+        complete: () => {
+          this.btnDisable = false;
         }
       }
     )
