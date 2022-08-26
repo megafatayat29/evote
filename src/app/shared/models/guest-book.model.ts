@@ -7,4 +7,5 @@ export interface GuestBook {
     statusAnggota: string;
     pendidikanTerakhir: string;
     universitas: string;
+    noPeserta: string;
   }

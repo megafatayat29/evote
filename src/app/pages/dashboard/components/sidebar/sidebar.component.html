@@ -3,13 +3,19 @@
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"  style="height: 800px;">
             <ul class="nav nav-pills flex-column mb-auto">
               <li>
-                <a routerLink="/z" class="nav-link text-white">
+                <a class="nav-link text-white btn" (click)="setSubmenuList()">
                     <i class="fa-solid fa-list"></i>  Daftar Peserta
                 </a>
               </li>
               <hr>
               <li>
-                <a routerLink="/dashboard/voting-board" class="nav-link text-white">
+                <a class="nav-link text-white btn" (click)="setSubmenuAbsensi()">
+                    <i class="fa-solid fa-calendar"></i>  Absensi
+                </a>
+              </li>
+              <hr>
+              <li>
+                <a class="nav-link text-white btn" (click)="setSubmenuVoting()">
                     <i class="fa-solid fa-check"></i>  Papan Pemilihan
                 </a>
               </li>

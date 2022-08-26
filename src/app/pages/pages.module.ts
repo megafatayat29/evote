@@ -6,9 +6,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RegisterService } from './register/services/register.service';
 import { AccountComponent } from './account/account.component';
-import { VerifiedEmailComponent } from './verified-email/verified-email.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './dashboard/components/sidebar/sidebar.component';
 import { ListComponent } from './dashboard/components/list/list.component';
@@ -19,10 +17,9 @@ import { ListComponent } from './dashboard/components/list/list.component';
     LoginComponent,
     RegisterComponent,
     AccountComponent,
-    VerifiedEmailComponent,
     DashboardComponent,
-    SidebarComponent,
-    ListComponent
+    ListComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -30,9 +27,6 @@ import { ListComponent } from './dashboard/components/list/list.component';
     PagesRoutingModule,
     FormsModule,
     ReactiveFormsModule
-  ],
-  providers: [
-    RegisterService
   ]
 })
 export class PagesModule { }
