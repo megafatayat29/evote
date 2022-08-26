@@ -76,9 +76,6 @@ export class RegisterComponent implements OnInit {
     setTimeout(() => {
       this.message = undefined;
     }, 10000);
-
-    // this.onReset();
-    // this.router.navigateByUrl('/register');
   }
 
   formatString(text: string, params: any[]): string {

@@ -1,23 +1,46 @@
 <app-header></app-header>
 
-<div class="container-md shadow-lg m-2 mx-auto">
-    <div class="row bg-base">
-        <div class="col p-5">
-          <h1 class="text-base">Dashboard Admin Page</h1>
-          <h3>Panitia Konvercab V PC ISNU Surabaya</h3>
-          <hr class="text-base" />
+<ng-container *ngIf="admin; else notAdmin">
+    <div class="container-md shadow-lg m-2 mx-auto">
+        <div class="row bg-base">
+            <div class="col p-5">
+            <h1 class="text-base">Dashboard Admin Page</h1>
+            <h3>Panitia Konvercab V PC ISNU Surabaya</h3>
+            <hr class="text-base" />
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <aside class="col-sm-3">
+                <app-sidebar></app-sidebar>
+            </aside>
+            
+            <section class="col-sm-9 bg-light" *ngIf="submenu == 'list'">
+                <app-list></app-list>
+            </section>
+            <section class="col-sm-9 bg-light" *ngIf="submenu == 'absensi'">
+                <h4>Ini absensi</h4>
+            </section>
+            <section class="col-sm-9 bg-light" *ngIf="submenu == 'voting'">
+                <h4>Ini papan voting</h4>
+            </section>
+        
         </div>
     </div>
+</ng-container>
+<ng-template #notAdmin>
+    <div class="container-md shadow-lg m-2 mx-auto">
+        <div class="row bg-base">
+            <div class="col p-5">
+            <h1 class="text-base">Maaf!</h1>
+            <h3>Hanya Admin Yang Boleh Mengakses Halaman Ini</h3>
+            <hr class="text-base" />
+            </div>
+        </div>
 
-    <div class="row">
-        
-        <aside class="col-sm-3">
-            <app-sidebar></app-sidebar>
-        </aside>
-        
-        <section class="col-sm-9 bg-light">
-            <app-list></app-list>
-        </section>
-    
+        <div class="row">
+            
+        </div>
     </div>
-</div>
+</ng-template>

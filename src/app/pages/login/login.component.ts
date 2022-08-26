@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.value.username === "alFaqir") {
       if (this.loginForm.value.password === "H@sbiRobbi") {
         sessionStorage.setItem('username', loginAdmin.username);
+        sessionStorage.setItem('submenu', 'list');
 
         this.message = {
           status: 'success',
