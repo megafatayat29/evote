@@ -31,5 +31,9 @@ export class PesertaService {
   public sendHadir(noPeserta: string): Observable<any> {
     return this.http.get<any>('https://e-vote-isnu-be.herokuapp.com/api/v1/vote/absensi?noPeserta=' + noPeserta);
   }
+
+  public getAbsensi(): Observable<any> {
+    return this.http.get('https://e-vote-isnu-be.herokuapp.com/api/v1/vote/list_peserta_hadir');
+  }
   
 }
