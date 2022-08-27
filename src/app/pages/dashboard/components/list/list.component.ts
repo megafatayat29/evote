@@ -54,18 +54,19 @@ export class ListComponent implements OnInit {
   }
 
   onView(noPeserta: string): void {
-    this.subscriber = {
-      next: (peserta: GuestBook) => {
-        console.log(peserta);
+    this.router.navigateByUrl(`/account/${noPeserta}`);
+    // this.subscriber = {
+    //   next: (peserta: GuestBook) => {
+    //     console.log(peserta);
         
-      },
-      error: console.error,
-      complete: () => {this.loading = false}
-    }
+    //   },
+    //   error: console.error,
+    //   complete: () => {this.loading = false}
+    // }
     
-    this.loading = true;
-    this.pesertaService.getByNoPeserta(noPeserta)
-    .subscribe(this.subscriber);
+    // this.loading = true;
+    // this.pesertaService.getByNoPeserta(noPeserta)
+    // .subscribe(this.subscriber);
   }
 
   sendVerif(peserta: any): void {

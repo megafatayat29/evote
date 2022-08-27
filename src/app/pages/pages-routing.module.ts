@@ -25,6 +25,10 @@ const routes: Routes = [
     component: AccountComponent
   },
   {
+    path: 'account/:noPeserta',
+    component: AccountComponent
+  },
+  {
     path: 'dashboard', 
     loadChildren: () => import('./dashboard/dashboard.module')
     .then(m => m.DashboardModule) 

@@ -7,10 +7,10 @@ import { PesertaService } from './components/list/service/peserta.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { VotingBoardComponent } from './components/voting-board/voting-board.component';
 import { CandidateService } from './components/voting-board/services/candidate.service';
+import { AbsensiComponent } from './components/absensi/absensi.component';
 
 @NgModule({
   declarations: [
-    
   ],
   imports: [
     CommonModule,

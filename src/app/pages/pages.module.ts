@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './dashboard/components/sidebar/sidebar.component';
 import { ListComponent } from './dashboard/components/list/list.component';
 import { VotingBoardComponent } from './dashboard/components/voting-board/voting-board.component';
+import { AbsensiComponent } from './dashboard/components/absensi/absensi.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { VotingBoardComponent } from './dashboard/components/voting-board/voting
     DashboardComponent,
     ListComponent,
     SidebarComponent,
-    VotingBoardComponent
+    VotingBoardComponent,
+    AbsensiComponent
   ],
   imports: [
     CommonModule,
