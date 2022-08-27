@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { GuestBook } from 'src/app/shared/models/guest-book.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,8 @@ export class DashboardComponent implements OnInit {
 
   admin: boolean = false;
   submenu: any;
+  verified: GuestBook[] = [];
+  unverified: GuestBook[] = [];
 
   constructor() { }
 
@@ -17,9 +20,10 @@ export class DashboardComponent implements OnInit {
     this.getSubmenu();
   }
 
-  ngOnChanges(): void {
-    this.getSubmenu();
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   console.log(changes);
+  //   this.getSubmenu();
+  // }
 
   isAdmin(): void {
     const user = sessionStorage.getItem('username');
@@ -29,9 +33,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getSubmenu(): void {
+    console.log('masuk getSubmenu');
     const submenu = sessionStorage.getItem('submenu');
     if (submenu != null || submenu != '') {
       this.submenu = submenu;
+      // window.location.reload();
     } else {
       this.submenu = 'list';
     }
