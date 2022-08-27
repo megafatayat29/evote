@@ -17,7 +17,10 @@
             </aside>
             
             <section class="col-sm-9 bg-light" *ngIf="submenu == 'list'">
-                <app-list></app-list>
+                <app-list
+                    [verified]="verified"
+                    [unverified]="unverified"
+                ></app-list>
             </section>
             <section class="col-sm-9 bg-light" *ngIf="submenu == 'absensi'">
                 <h4>Ini absensi</h4>
@@ -39,8 +42,7 @@
             </div>
         </div>
 
-        <div class="row">
-            
+        <div class="row bg-light">
         </div>
     </div>
 </ng-template>
