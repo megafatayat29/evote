@@ -10,6 +10,7 @@ import { AccountComponent } from './account/account.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './dashboard/components/sidebar/sidebar.component';
 import { ListComponent } from './dashboard/components/list/list.component';
+import { VotingBoardComponent } from './dashboard/components/voting-board/voting-board.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ListComponent } from './dashboard/components/list/list.component';
     AccountComponent,
     DashboardComponent,
     ListComponent,
-    SidebarComponent
+    SidebarComponent,
+    VotingBoardComponent
   ],
   imports: [
     CommonModule,
