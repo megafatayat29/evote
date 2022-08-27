@@ -13,6 +13,7 @@ import { PesertaService } from './service/peserta.service';
 })
 export class ListComponent implements OnInit {
 
+  admin: boolean = false;
   subscriber: Observer<any>;
   loading: boolean = false;
   @Input() verified: GuestBook[] = [];
@@ -27,8 +28,16 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
+    this.isAdmin();
   }
 
+  isAdmin(): void {
+    const user = sessionStorage.getItem('username');
+    if (user == "alFaqir") {
+      this.admin = true;
+    }
+  }
+  
   getAll(): void {
     this.subscriber = {
       next: (peserta: any) => {
