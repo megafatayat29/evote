@@ -1,0 +1,39 @@
+<app-header></app-header>
+
+<ng-container *ngIf="admin; else notAdmin">
+    <div class="container-md shadow-lg m-2 mx-auto">
+        <div class="row bg-base">
+            <div class="col p-5">
+            <h1 class="text-base">Dashboard Admin Page</h1>
+            <h3>Panitia Konvercab V PC ISNU Surabaya</h3>
+            <hr class="text-base" />
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <aside class="col-sm-2">
+                <app-sidebar></app-sidebar>
+            </aside>
+            
+            <div class="col-sm-10 bg-light">
+                
+            </div>
+        
+        </div>
+    </div>
+</ng-container>
+<ng-template #notAdmin>
+    <div class="container-md shadow-lg m-2 mx-auto">
+        <div class="row bg-base">
+            <div class="col p-5">
+            <h1 class="text-base">Maaf!</h1>
+            <h3>Hanya Admin Yang Boleh Mengakses Halaman Ini</h3>
+            <hr class="text-base" />
+            </div>
+        </div>
+
+        <div class="row bg-light">
+        </div>
+    </div>
+</ng-template>

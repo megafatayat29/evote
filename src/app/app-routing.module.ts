@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountComponent } from './pages/account/account.component';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { VerifiedEmailComponent } from './pages/verified-email/verified-email.component';
 
 const routes: Routes = [
@@ -18,24 +14,9 @@ const routes: Routes = [
     .then(m => m.PagesModule) 
   },
   {
-    path: 'register',
-    component: RegisterComponent
-  },
-  {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'account',
-    component: AccountComponent
-  },
-  {
     path: 'verified-email',
-    component: VerifiedEmailComponent
-  },
-  {
-    path: 'verified-email/:token',
-    component: VerifiedEmailComponent
+    loadChildren: () => import('./pages/verified-email/verified-email.module')
+    .then(m => m.VerifiedEmailModule) 
   }
 ];
 

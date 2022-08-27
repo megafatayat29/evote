@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://e-vote-isnu-be.herokuapp.com/api",
+        "target": "https://e-vote-isnu-be.herokuapp.com//api",
         "logLevel": "debug",
         "changeOrigin": true,
         "pathRewrite": {
