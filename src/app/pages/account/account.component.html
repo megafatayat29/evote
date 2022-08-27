@@ -3,8 +3,8 @@
 <div class="container-md shadow-lg m-2 mx-auto">
     <div class="row bg-base">
         <div class="col p-5">
-          <h1 class="text-base">Login Admin Page</h1>
-          <h3>Panitia Konvercab V PC ISNU Surabaya</h3>
+          <h1 class="text-base">Detail Anggota</h1>
+          <h3>Konvercab V PC ISNU Surabaya</h3>
           <hr class="text-base" />
         </div>
     </div>
@@ -26,42 +26,42 @@
           ></button>
         </div>
       </ng-container>
-        <div class="col-md-6">
-            <form [formGroup]="absenForm" (ngSubmit)="onSubmit()">
-              <div class="has-validation mb-3">
-                <div class="mb-3">
-                    <label class="form-label">Nama</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      formControlName="username"
-                      id="username"
-                      name="username"
-                      readonly
-                    />
-                </div>
-
-                <div class="mb-3">
-                  <label class="form-label">Email</label>
+      <div class="col-md-6">
+          <form [formGroup]="absenForm" (ngSubmit)="onSubmit()">
+            <div class="has-validation mb-3">
+              <div class="mb-3">
+                  <label class="form-label">Nama</label>
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
-                    formControlName="email"
-                    id="email"
-                    name="email"
+                    formControlName="nama"
+                    id="username"
+                    name="username"
                     readonly
                   />
-                </div>
-
-                <button
-                  type="submit"
-                  class="btn btn-primary"
-                  [disabled]="absenForm.invalid"
-                >
-                  Hadir
-                </button>
               </div>
-            </form>
-          </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                  id="email"
+                  name="email"
+                  readonly
+                />
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="absenForm.invalid"
+              >
+                Hadir
+              </button>
+            </div>
+          </form>
+      </div>
     </div>
 </div>

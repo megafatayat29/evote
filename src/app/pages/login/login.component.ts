@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
     }, 10000);
 
     this.onReset();
-    this.router.navigateByUrl('/dashboard');
+    this.router.navigateByUrl('/dashboard/list');
   }
 
   onReset(): void {

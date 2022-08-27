@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AbsensiComponent } from './components/absensi/absensi.component';
 import { ListComponent } from './components/list/list.component';
 import { VotingBoardComponent } from './components/voting-board/voting-board.component';
 import { DashboardComponent } from './dashboard.component';
@@ -15,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: 'absensi',
-    component: ListComponent
+    component: AbsensiComponent
   },
   {
     path: 'voting',
