@@ -9,6 +9,7 @@ import { CandidateService } from './services/candidate.service';
 })
 export class VotingBoardComponent implements OnInit {
 
+  admin: boolean = false;
   subscriber: Observer<any>;
   loading: boolean = false;
   count1: number;
@@ -20,6 +21,14 @@ export class VotingBoardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCount();
+    this.isAdmin();
+  }
+
+  isAdmin(): void {
+    const user = sessionStorage.getItem('username');
+    if (user == "alFaqir") {
+      this.admin = true;
+    }
   }
 
   getCount(): void {

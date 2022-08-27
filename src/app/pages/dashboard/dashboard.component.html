@@ -1,4 +1,4 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 
 <ng-container *ngIf="admin; else notAdmin">
     <div class="container-md shadow-lg m-2 mx-auto">
@@ -15,8 +15,9 @@
             <aside class="col-sm-3">
                 <app-sidebar></app-sidebar>
             </aside>
-            
+
             <section class="col-sm-9 bg-light" *ngIf="submenu == 'list'">
+                <router-outlet></router-outlet>
                 <app-list
                     [verified]="verified"
                     [unverified]="unverified"
@@ -45,4 +46,4 @@
         <div class="row bg-light">
         </div>
     </div>
-</ng-template>
+</ng-template> -->

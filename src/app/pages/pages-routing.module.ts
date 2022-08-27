@@ -25,8 +25,9 @@ const routes: Routes = [
     component: AccountComponent
   },
   {
-    path: 'dashboard',
-    component: DashboardComponent
+    path: 'dashboard', 
+    loadChildren: () => import('./dashboard/dashboard.module')
+    .then(m => m.DashboardModule) 
   },
 ];
 
