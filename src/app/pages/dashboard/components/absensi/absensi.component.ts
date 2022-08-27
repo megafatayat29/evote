@@ -13,6 +13,8 @@ export class AbsensiComponent implements OnInit {
   admin: boolean = false;
   subscriber: Observer<any>;
   loading: boolean = false;
+  listPeserta: any;
+  count: number;
 
   constructor(
     private readonly router: Router,
@@ -34,7 +36,7 @@ export class AbsensiComponent implements OnInit {
   getAll(): void {
     this.subscriber = {
       next: (resp: any) => {
-        console.log(resp);
+        this.listPeserta = resp.verified;
       },
       error: console.error,
       complete: () => { this.loading = false },
