@@ -13,6 +13,7 @@ import { PesertaService } from '../dashboard/components/list/service/peserta.ser
 })
 export class AccountComponent implements OnInit {
 
+  admin: boolean = false;
   loading: boolean = false;
   guestBook!: GuestBook;
   message?: AlertMessage;
@@ -32,6 +33,7 @@ export class AccountComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isAdmin();
     this.activatedRoute.params.pipe(
       map((params: Params) => {
         return params.noPeserta ? params.noPeserta : '';
@@ -101,6 +103,13 @@ export class AccountComponent implements OnInit {
     this.loading = true;
     this.pesertaService.getByNoPeserta(noPeserta)
     .subscribe(this.subscriber);
+  }
+
+  isAdmin(): void {
+    const user = sessionStorage.getItem('username');
+    if (user == "alFaqir") {
+      this.admin = true;
+    }
   }
 
 }
