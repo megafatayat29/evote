@@ -13,6 +13,7 @@ import { PesertaService } from '../dashboard/components/list/service/peserta.ser
 })
 export class AccountComponent implements OnInit {
 
+  admin: boolean = false;
   loading: boolean = false;
   guestBook!: GuestBook;
   message?: AlertMessage;
@@ -32,6 +33,7 @@ export class AccountComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isAdmin();
     this.activatedRoute.params.pipe(
       map((params: Params) => {
         return params.noPeserta ? params.noPeserta : '';
@@ -55,17 +57,20 @@ export class AccountComponent implements OnInit {
   onSubmit(): void {
     this.loading = true;
     const guestBook: GuestBook = this.absenForm.value;
-    console.log(guestBook);
 
     this.subscriber = {
       next: (response: any) => {
-        console.log(response);
         this.message = {
           status: 'success',
-          text: `Selamat, ${guestBook.nama} telah tercatat hadir pada KONVERCAB V PC ISNU Surabaya!`
+          text: `Selamat, ${guestBook.nama} tercatat hadir!`
         }
       },
-      error: console.error,
+      error: (error: any) => {
+        this.message = {
+          status: 'warning',
+          text: `Maaf, ${guestBook.nama} sudah tercatat hadir!`
+        }
+      },
       complete: () => {this.loading = false}
     }
     
@@ -76,9 +81,6 @@ export class AccountComponent implements OnInit {
     setTimeout(() => {
       this.message = undefined;
     }, 10000);
-
-    this.onReset();
-    this.router.navigateByUrl('/dashboard/list');
   }
 
   onReset(): void {
@@ -101,6 +103,13 @@ export class AccountComponent implements OnInit {
     this.loading = true;
     this.pesertaService.getByNoPeserta(noPeserta)
     .subscribe(this.subscriber);
+  }
+
+  isAdmin(): void {
+    const user = sessionStorage.getItem('username');
+    if (user == "alFaqir") {
+      this.admin = true;
+    }
   }
 
 }

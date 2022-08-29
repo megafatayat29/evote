@@ -1,0 +1,90 @@
+<app-header></app-header>
+
+<div class="container-md shadow-lg m-2 mx-auto">
+    <div class="row bg-base">
+        <div class="col p-5">
+          <h1 class="text-base">Papan Voting Peserta</h1>
+          <h3>Konvercab V PC ISNU Surabaya</h3>
+          <hr class="text-base" />
+        </div>
+    </div>
+    <div class="row bg-light justify-content-start p-5">
+      <ng-container *ngIf="message">
+        <div
+          class="mt-4 alert {{
+            message.status ? 'alert-' + message.status : ''
+          }} fade show"
+          role="alert"
+        >
+          {{ message.text }}
+          <button
+            type="button"
+            class="btn-close btn-sm float-end"
+            data-bs-dismiss="alert"
+            (click)="message = undefined"
+            aria-label="Close"
+          ></button>
+        </div>
+      </ng-container>
+      <div class="col-md-12">
+          <form [formGroup]="voteForm" (ngSubmit)="onSubmit()">
+            <div class="has-validation mb-3">
+              <div class="col-6 mb-3">
+                  <label class="form-label">No Peserta</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="noPeserta"
+                    id="noPeserta"
+                    name="noPeserta"
+                  />
+              </div>
+
+              <!-- <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="vote"
+                  id="vote"
+                  name="vote"
+                />
+              </div> -->
+
+              <div class="row">
+                    <div class="col-6 card m-3" style="width: 18rem;">
+                        <img src="../../../../../assets/images/calon1.jpg" class="card-img-top" alt="calon 1">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" formControlName="vote" value=1 id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    <h5 class="card-title text-center">Calon 1</h5>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 card m-3" style="width: 18rem;">
+                        <img src="../../../../../assets/images/calon2.jpg" class="card-img-top" alt="calon 2">
+                        <div class="card-body">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" formControlName="vote" value=2 id="flexRadioDefault2">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    <h5 class="card-title text-center">Calon 2</h5>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+                
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="voteForm.invalid"
+                >
+                  Kirim
+                </button>
+            </div>
+          </form>
+      </div>
+    </div>
+</div>
