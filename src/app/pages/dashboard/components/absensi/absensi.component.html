@@ -18,22 +18,24 @@
             
             <div class="col-sm-10 bg-light">
                 <div class="table-responsive">
-                    <!-- <h3 class="mt-2 mb-2">Peserta Sudah Terverifikasi</h3> -->
+                    <h3 class="mt-2 mb-2">Daftar Peserta Sudah Hadir</h3>
                     <table class="table table-striped">
                         <thead>
                         <tr>
                             <th scope="col">No Peserta</th>
-                            <th scope="col">Voting</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Sudah Memilih?</th>
                         </tr>
                         </thead>
                         <tbody>
                             <ng-container *ngIf="!loading; else isLoading">
                                 <ng-container *ngIf="listPeserta.length > 0; else emptyData">
-                                        <tr *ngFor="let peserta of listPeserta">
-                                            <th scope="row">{{ peserta.noPeserta }}</th>
-                                            <td *ngIf="peserta.vote == null">Belum Memilih</td>
-                                            <td *ngIf="peserta.vote != null">Sudah Memilih</td>
-                                        </tr>
+                                    <tr *ngFor="let peserta of listPeserta">
+                                        <th scope="row">{{ peserta.noPeserta }}</th>
+                                        <td scope="row">{{ peserta.noPeserta }}</td>
+                                        <td *ngIf="peserta.vote == null"><i class="fa-solid fa-close"></i></td>
+                                        <td *ngIf="peserta.vote != null"><i class="fa-solid fa-check"></i></td>
+                                    </tr>
                                 </ng-container>
                                 <ng-template #emptyData>
                                     <tr>

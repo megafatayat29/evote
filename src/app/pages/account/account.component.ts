@@ -62,10 +62,10 @@ export class AccountComponent implements OnInit {
     this.subscriber = {
       next: (response: any) => {
         console.log(response);
-        this.message = {
-          status: 'success',
-          text: `Selamat, ${guestBook.nama} telah tercatat hadir pada KONVERCAB V PC ISNU Surabaya!`
-        }
+        // this.message = {
+        //   status: 'success',
+        //   text: `Selamat, ${guestBook.nama} telah tercatat hadir pada KONVERCAB V PC ISNU Surabaya!`
+        // }
       },
       error: console.error,
       complete: () => {this.loading = false}
