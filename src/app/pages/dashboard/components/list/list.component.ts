@@ -19,6 +19,10 @@ export class ListComponent implements OnInit {
   @Input() verified: GuestBook[] = [];
   @Input() unverified: GuestBook[] = [];
   message?: AlertMessage;
+  nama: any;
+  nama1: any;
+  p: any = 1;
+  p2: any = 1;
   
   constructor(
     private readonly router: Router,
@@ -73,6 +77,26 @@ export class ListComponent implements OnInit {
         console.log('email completed')  
       }
     })
+  }
+
+  searchVerif() {
+    if (this.nama == "") {
+      this.ngOnInit();
+    } else {
+      this.verified = this.verified.filter(res => {
+        return res.nama.toLocaleLowerCase().match(this.nama.toLocaleLowerCase())
+      })
+    }
+  }
+
+  searchUnverif() {
+    if (this.nama1 == "") {
+      this.ngOnInit();
+    } else {
+      this.unverified = this.unverified.filter(res => {
+        return res.nama.toLocaleLowerCase().match(this.nama1.toLocaleLowerCase())
+      })
+    }
   }
 
 }

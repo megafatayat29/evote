@@ -49,6 +49,8 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     this.loading = true;
     const guestBook: GuestBook = this.guestForm.value;
+    
+    this.loading = true;
     this.registerService.save(guestBook)
       .subscribe(
         {
