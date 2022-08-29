@@ -16,6 +16,8 @@ export class AbsensiComponent implements OnInit {
   listPeserta: any;
   listPesertaVote: any;
   count: number;
+  nama: any;
+  nama1: any;
 
   constructor(
     private readonly router: Router,
@@ -47,6 +49,26 @@ export class AbsensiComponent implements OnInit {
     this.loading = true;
     this.pesertaService.getAbsensi()
     .subscribe(this.subscriber);
+  }
+
+  searchVote() {
+    if (this.nama == "") {
+      this.ngOnInit();
+    } else {
+      this.listPesertaVote = this.listPesertaVote.filter((res: { nama: string; }) => {
+        return res.nama.toLocaleLowerCase().match(this.nama.toLocaleLowerCase())
+      })
+    }
+  }
+
+  searchUnvote() {
+    if (this.nama1 == "") {
+      this.ngOnInit();
+    } else {
+      this.listPeserta = this.listPeserta.filter((res: { nama: string; }) => {
+        return res.nama.toLocaleLowerCase().match(this.nama1.toLocaleLowerCase())
+      })
+    }
   }
 
 }

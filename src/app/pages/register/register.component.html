@@ -26,6 +26,7 @@
           ></button>
         </div>
       </ng-container>
+      <ng-container *ngIf="!loading; else isLoading">
         <div class="col-md-6">
             <form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
               <div class="has-validation mb-3">
@@ -149,6 +150,17 @@
                 </button>
               </div>
             </form>
-          </div>
+        </div>
+      </ng-container>
+      <ng-template #isLoading>
+        <div class="container p-5">
+            <li class="list-group-item">
+                <span class="d-flex align-items-center">
+                    <strong>Loading....</strong>
+                    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                </span>
+            </li>
+        </div>
+    </ng-template>
     </div>
 </div>
