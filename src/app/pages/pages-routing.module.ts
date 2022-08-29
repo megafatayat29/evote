@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VerifiedEmailComponent } from './verified-email/verified-email.component';
+import { VotePesertaComponent } from './vote-peserta/vote-peserta.component';
 
 const routes: Routes = [
   { 
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'account',
     component: AccountComponent
+  },
+  {
+    path: 'vote',
+    component: VotePesertaComponent
   },
   {
     path: 'account/:noPeserta',

@@ -12,6 +12,7 @@ import { SidebarComponent } from './dashboard/components/sidebar/sidebar.compone
 import { ListComponent } from './dashboard/components/list/list.component';
 import { VotingBoardComponent } from './dashboard/components/voting-board/voting-board.component';
 import { AbsensiComponent } from './dashboard/components/absensi/absensi.component';
+import { VotePesertaComponent } from './vote-peserta/vote-peserta.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AbsensiComponent } from './dashboard/components/absensi/absensi.compone
     ListComponent,
     SidebarComponent,
     VotingBoardComponent,
-    AbsensiComponent
+    AbsensiComponent,
+    VotePesertaComponent
   ],
   imports: [
     CommonModule,
