@@ -14,6 +14,7 @@ export class AbsensiComponent implements OnInit {
   subscriber: Observer<any>;
   loading: boolean = false;
   listPeserta: any;
+  listPesertaVote: any;
   count: number;
 
   constructor(
@@ -37,6 +38,7 @@ export class AbsensiComponent implements OnInit {
     this.subscriber = {
       next: (resp: any) => {
         this.listPeserta = resp.peserta;
+        this.listPesertaVote = resp.voted;
       },
       error: console.error,
       complete: () => { this.loading = false },
