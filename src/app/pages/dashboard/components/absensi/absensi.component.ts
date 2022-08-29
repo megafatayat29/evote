@@ -18,6 +18,8 @@ export class AbsensiComponent implements OnInit {
   count: number;
   nama: any;
   nama1: any;
+  p: any = 1;
+  p2: any = 1;
 
   constructor(
     private readonly router: Router,

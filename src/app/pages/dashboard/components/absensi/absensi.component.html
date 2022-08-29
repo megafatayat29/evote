@@ -32,7 +32,7 @@
                         <tbody>
                             <ng-container *ngIf="!loading; else isLoading">
                                 <ng-container *ngIf="listPeserta.length > 0; else emptyData">
-                                    <tr *ngFor="let peserta of listPeserta">
+                                    <tr *ngFor="let peserta of listPeserta | paginate: { id:'paging1', itemsPerPage: 5, currentPage: p }; let i = index">
                                         <th scope="row">{{ peserta.noPeserta }}</th>
                                         <td>{{ peserta.nama }}</td>
                                     </tr>
@@ -55,6 +55,7 @@
                             </ng-template>
                         </tbody>
                     </table>
+                    <pagination-controls id="paging1" (pageChange)="p = $event"></pagination-controls>
                 </div>
                 <hr>
                 <div class="table-responsive">
@@ -72,7 +73,7 @@
                         <tbody>
                             <ng-container *ngIf="!loading; else isLoading">
                                 <ng-container *ngIf="listPesertaVote.length > 0; else emptyData">
-                                    <tr *ngFor="let peserta of listPesertaVote">
+                                    <tr *ngFor="let peserta of listPesertaVote | paginate: { id:'paging2', itemsPerPage: 5, currentPage: p2 }; let i = index">
                                         <th scope="row">{{ peserta.noPeserta }}</th>
                                         <td>{{ peserta.nama }}</td>
                                     </tr>
@@ -95,6 +96,7 @@
                             </ng-template>
                         </tbody>
                     </table>
+                    <pagination-controls id="paging2" (pageChange)="p2 = $event"></pagination-controls>
                 </div>
             </div>
         </div>

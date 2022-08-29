@@ -1,10 +1,10 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PagesModule } from './pages/pages.module';
-import { RequestInterceptor } from './shared/interceptors/request.interceptor';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -16,13 +16,12 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     PagesModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
-  // providers: [
-  //   {
-  //     provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true
-  //   }
-  // ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
 })
 export class AppModule { }

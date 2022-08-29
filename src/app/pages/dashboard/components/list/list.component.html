@@ -25,6 +25,7 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th scope="col">#</th>
                             <th scope="col">No Peserta</th>
                             <th scope="col">Nama Peserta</th>
                             <th scope="col">Email</th>
@@ -38,8 +39,9 @@
                         <tbody>
                             <ng-container *ngIf="!loading; else isLoading">
                                 <ng-container *ngIf="verified.length > 0; else emptyData">
-                                        <tr *ngFor="let peserta of verified">
-                                            <th scope="row">{{ peserta.noPeserta }}</th>
+                                        <tr *ngFor="let peserta of verified | paginate: { id: 'paging1', itemsPerPage: 5, currentPage: p }; let i = index">
+                                            <th scope="row">{{ i+1 }}</th>
+                                            <td>{{ peserta.noPeserta }}</td>
                                             <td>{{ peserta.nama }}</td>
                                             <td>{{ peserta.email }}</td>
                                             <td>{{ peserta.alamat }}</td>
@@ -77,6 +79,7 @@
                             </ng-template>
                         </tbody>
                     </table>
+                    <pagination-controls id="paging1" (pageChange)="p = $event"></pagination-controls>
                 </div>
                 <hr>
                 <div class="table-responsive">
@@ -104,6 +107,7 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th scope="col">#</th>
                             <th scope="col">No Peserta</th>
                             <th scope="col">Nama Peserta</th>
                             <th scope="col">Email</th>
@@ -117,8 +121,10 @@
                         <tbody>
                             <ng-container *ngIf="!loading; else isLoading">
                                 <ng-container *ngIf="unverified.length > 0; else emptyData">
-                                        <tr *ngFor="let peserta of unverified">
-                                            <th scope="row">{{ peserta.noPeserta }}</th>
+                                        <tr *ngFor="let peserta of unverified | paginate: { id:'paging2', itemsPerPage: 5, currentPage: p2 }; let i = index">
+                                            <th scope="row">{{ i+1 }}</th>
+                                            <td>{{ peserta.noPeserta }}</td>
+                                            <td>{{ peserta.noPeserta }}</td>
                                             <td>{{ peserta.nama }}</td>
                                             <td>{{ peserta.email }}</td>
                                             <td>{{ peserta.alamat }}</td>
@@ -156,7 +162,7 @@
                             </ng-template>
                         </tbody>
                     </table>
-                    
+                    <pagination-controls id="paging2" (pageChange)="p2 = $event"></pagination-controls>
                 </div>
             </div>
         
