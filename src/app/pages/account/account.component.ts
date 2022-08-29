@@ -57,17 +57,20 @@ export class AccountComponent implements OnInit {
   onSubmit(): void {
     this.loading = true;
     const guestBook: GuestBook = this.absenForm.value;
-    console.log(guestBook);
 
     this.subscriber = {
       next: (response: any) => {
-        console.log(response);
-        // this.message = {
-        //   status: 'success',
-        //   text: `Selamat, ${guestBook.nama} telah tercatat hadir pada KONVERCAB V PC ISNU Surabaya!`
-        // }
+        this.message = {
+          status: 'success',
+          text: `Selamat, ${guestBook.nama} tercatat hadir!`
+        }
       },
-      error: console.error,
+      error: (error: any) => {
+        this.message = {
+          status: 'warning',
+          text: `Maaf, ${guestBook.nama} sudah tercatat hadir!`
+        }
+      },
       complete: () => {this.loading = false}
     }
     
@@ -78,9 +81,6 @@ export class AccountComponent implements OnInit {
     setTimeout(() => {
       this.message = undefined;
     }, 10000);
-
-    this.onReset();
-    this.router.navigateByUrl('/dashboard/list');
   }
 
   onReset(): void {

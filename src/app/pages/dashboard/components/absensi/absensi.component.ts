@@ -36,7 +36,6 @@ export class AbsensiComponent implements OnInit {
   getAll(): void {
     this.subscriber = {
       next: (resp: any) => {
-        console.log(resp);
         this.listPeserta = resp.peserta;
       },
       error: console.error,
