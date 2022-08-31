@@ -62,6 +62,7 @@ export class ListComponent implements OnInit {
   }
 
   sendVerif(peserta: any): void {
+    this.loading = true;
     this.emailService.sendEmailVerification(peserta.email)
     .subscribe({
       next: (value: any) => {
@@ -71,12 +72,39 @@ export class ListComponent implements OnInit {
         }
       },
       error: (err: any) => {
+        console.error;
+      }, 
+      complete: () => this.loading = false  
+    })
+
+    setTimeout(() => {
+      this.message = undefined;
+    }, 10000);
+  }
+
+  delete(peserta: any): void {
+    const requestBody = {
+      "email": peserta.email
+    }
+    this.loading = true;
+    this.pesertaService.delete(requestBody)
+    .subscribe({
+      next: (response: any) => {
+        console.log(response);
+        this.message = {
+          status: 'success',
+          text: `Selamat, data ${peserta.nama} berhasil dihapus!`
+        }
+      },
+      error: (err: any) => {
         console.log('email error')
       }, 
-      complete: () => {
-        console.log('email completed')  
-      }
+      complete: () => this.loading = false  
     })
+
+    setTimeout(() => {
+      this.message = undefined;
+    }, 10000);
   }
 
   searchVerif() {
