@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EMPTY, Observable, Subject } from 'rxjs';
+import { EMPTY, map, Observable, Subject } from 'rxjs';
 import { GuestBook } from 'src/app/shared/models/guest-book.model';
 
 @Injectable({
@@ -26,6 +26,20 @@ export class PesertaService {
 
   public getByNoPeserta(noPeserta: string): Observable<GuestBook> {
     return this.http.get<GuestBook>('https://e-vote-isnu-be.herokuapp.com/api/v1/anggota/nopeserta/' + noPeserta);
+  }
+
+  public delete(email: any): Observable<any> {
+    let httpheaders=new HttpHeaders()
+    .set('Content-type','application/Json');
+    let options={
+      headers:httpheaders,
+      body: email
+    };
+    return this.http.delete<any>('https://e-vote-isnu-be.herokuapp.com/api/v1/anggota', options)
+      .pipe(
+        map(()=> this.pesertaSubject.next(true))
+      ) 
+    ;
   }
 
   public sendHadir(noPeserta: string): Observable<any> {

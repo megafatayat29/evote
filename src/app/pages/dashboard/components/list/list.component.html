@@ -115,7 +115,7 @@
                             <th scope="col">Status</th>
                             <th scope="col">Pendidikan Terakhir</th>
                             <th scope="col">Institusi</th>
-                            <th scope="col">Action</th>
+                            <th scope="col" style="min-width: 100px;">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -139,6 +139,11 @@
                                                     (click)="sendVerif(peserta)"
                                                     >
                                                     <i class="fas fa-envelope"></i>
+                                                </button>
+                                                <button class="btn btn-danger btn-sm mx-1"
+                                                    (click)="delete(peserta)"
+                                                    >
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </td>
                                         </tr>
