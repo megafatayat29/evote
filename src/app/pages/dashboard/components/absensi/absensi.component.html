@@ -34,7 +34,7 @@
                             <ng-container *ngIf="!loading; else isLoading">
                                 <ng-container *ngIf="listPeserta.length > 0; else emptyData">
                                     <tr *ngFor="let peserta of listPeserta | paginate: { id:'paging1', itemsPerPage: 5, currentPage: p }; let i = index">
-                                        <th scope="row">{{ i+1 }}</th>
+                                        <th scope="row">{{ i+((p-1)*5)+1 }}</th>
                                         <td>{{ peserta.noPeserta }}</td>
                                         <td>{{ peserta.nama }}</td>
                                     </tr>
@@ -77,7 +77,7 @@
                             <ng-container *ngIf="!loading; else isLoading">
                                 <ng-container *ngIf="listPesertaVote.length > 0; else emptyData">
                                     <tr *ngFor="let peserta of listPesertaVote | paginate: { id:'paging2', itemsPerPage: 5, currentPage: p2 }; let i = index">
-                                        <th scope="row">{{ i+1 }}</th>
+                                        <th scope="row">{{ i+((p2-1)*5)+1 }}</th>
                                         <td>{{ peserta.noPeserta }}</td>
                                         <td>{{ peserta.nama }}</td>
                                     </tr>
