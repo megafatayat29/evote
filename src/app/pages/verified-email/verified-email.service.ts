@@ -27,4 +27,11 @@ export class VerifiedEmailService {
       map(()=> this.guestSubject.next(true))
     )
   }
+
+  sendManualInvitation(email: string) {
+    return this.http.post<any>(`https://e-vote-isnu-be.herokuapp.com/api/v1/anggota?service=ManualVerification`, {"email" : email})
+      .pipe(
+        map(()=> this.guestSubject.next(true))
+    ) 
+  }
 }

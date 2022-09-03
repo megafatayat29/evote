@@ -82,6 +82,27 @@ export class ListComponent implements OnInit {
     }, 10000);
   }
 
+  sendInvitation(peserta: any): void {
+    this.loading = true;
+    this.emailService.sendManualInvitation(peserta.email)
+    .subscribe({
+      next: (value: any) => {
+        this.message = {
+          status: 'success',
+          text: `Selamat, undangan untuk ${peserta.nama} berhasil dikirimkan!`
+        }
+      },
+      error: (err: any) => {
+        console.error;
+      }, 
+      complete: () => this.loading = false  
+    })
+
+    setTimeout(() => {
+      this.message = undefined;
+    }, 10000);
+  }
+
   delete(peserta: any): void {
     const requestBody = {
       "email": peserta.email
