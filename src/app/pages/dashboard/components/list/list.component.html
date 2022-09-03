@@ -63,7 +63,7 @@
                                 </ng-container>
                                 <ng-template #emptyData>
                                     <tr>
-                                    <td colspan="8" class="text-center">Belum ada data</td>
+                                    <td colspan="9" class="text-center">Belum ada data</td>
                                     </tr>
                                 </ng-template>
                             </ng-container>
@@ -141,6 +141,11 @@
                                                     >
                                                     <i class="fas fa-envelope"></i>
                                                 </button>
+                                                <button class="btn btn-success btn-sm mx-1"
+                                                    (click)="sendInvitation(peserta)"
+                                                    >
+                                                    <i class="fas fa-check-circle"></i>
+                                                </button>
                                                 <button class="btn btn-danger btn-sm mx-1"
                                                     (click)="delete(peserta)"
                                                     >
@@ -151,7 +156,7 @@
                                 </ng-container>
                                 <ng-template #emptyData>
                                     <tr>
-                                    <td colspan="7" class="text-center">Belum ada data</td>
+                                    <td colspan="9" class="text-center">Belum ada data</td>
                                     </tr>
                                 </ng-template>
                             </ng-container>
